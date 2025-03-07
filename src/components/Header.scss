@@ -1,0 +1,144 @@
+/* 1) Убираем дефолтные отступы, задаём синий фон страницы */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #33416f; /* Цвет фона, который будет виден "между" блоками */
+}
+
+/* 2) Растягиваем header на всю ширину экрана */
+.header {
+  width: 100%;
+  box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+  display: flex;
+  align-items: center; /* Выравниваем элементы по вертикали */
+  justify-content: space-between; /* Левый и правый блоки разъезжаются */
+  gap: 20px;
+  background: transparent; /* Прозрачный фон (синий фон у body) */
+  height: 80px; /* Фиксированная высота хедера */
+  padding: 5px 0px;
+  
+}
+
+/* Левый блок (лого + поиск) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #fdfaf4;
+  border-radius: 15px;
+  padding: 10px 20px;
+  flex-basis: 70%; /* Левый блок занимает 70% ширины */
+  height: 100%; /* Делаем одинаковую высоту */
+}
+
+.logo img {
+  height: 50px; /* Увеличиваем логотип */
+  width: auto;
+}
+
+/* Поиск */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  min-height: 40px;
+  flex: 1; /* Растягиваем поле ввода по ширине */
+
+  .search {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+  }
+
+  .search-icon {
+    width: 22px;
+    height: 22px;
+    margin-left: 8px;
+  }
+}
+
+/* 🔹 Правый блок (контейнер для кнопок) */
+.header-right {
+  display: flex;
+  align-items: center;
+  background-color: #fdfaf4;
+  border-radius: 15px;
+  padding: 10px 15px;
+  flex-basis: 30%; /* Правый блок занимает 30% ширины */
+  height: 100%;
+  width: 250px; /* Фиксированная ширина */
+  justify-content: space-between; /* Разделяем кнопки на 2 группы */
+}
+
+/* 🔹 Группа кнопок "Услуги" + "Корзина" */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Сгруппировали кнопки ближе */
+}
+
+/* 🔹 Кнопка "Войти" */
+.btn-login {
+  margin-left: auto; /* Прижимаем вправо */
+}
+
+/* 🔹 Общие стили кнопок */
+.btn {
+  background-color: #f8e5e4; /* Светло-розовый фон */
+  border: none;
+  border-radius: 10px; /* Уменьшаем скругление */
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px; /* Делаем шрифт чуть меньше */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px; /* Уменьшаем паддинги */
+  width: 100px; /* Фиксированная ширина */
+  height: 42px; /* Фиксированная высота */
+  transition: 0.2s ease;
+}
+
+/* 🔹 Кнопка "Войти" */
+.btn-login {
+  background-color: #e49c9a; /* Насыщенный розовый */
+  color: white;
+}
+
+/* 🔹 Кнопка "Корзина" */
+.cart {
+  position: relative;
+  width: 42px; /* Делаем меньше */
+  height: 42px; /* Делаем меньше */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8e5e4;
+  border-radius: 10px;
+  transition: 0.2s ease;
+
+  img {
+    width: 18px; /* Уменьшаем иконку */
+    height: 15px;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff3333;
+    color: #fff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+}
