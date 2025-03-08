@@ -92,8 +92,7 @@ body {
   border-radius: 10px; /* Уменьшаем скругление */
   cursor: pointer;
   color: #333;
-  font-weight: bold;
-  font-size: 14px; /* Делаем шрифт чуть меньше */
+  font-size: 13px; /* Делаем шрифт чуть меньше */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,6 +100,9 @@ body {
   width: 100px; /* Фиксированная ширина */
   height: 42px; /* Фиксированная высота */
   transition: 0.2s ease;
+}
+.btn:hover {
+  background-color: #ffa4b0;
 }
 
 /* 🔹 Кнопка "Войти" */
