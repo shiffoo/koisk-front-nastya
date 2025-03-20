@@ -1,5 +1,6 @@
 import React from "react";
 import "./MainContent.scss";
+import ProductCard from "./ProductCard";
 
 // Заглушки (в будущем заменим на API)
 import defaultImage from "/assets/images/advertisment.png"; // Заглушка
@@ -15,8 +16,8 @@ const recommendations = [
   ];
 
 const products = [
-  { id: 1, title: "Снэк", price: 500, image: "/assets/snack.jpg" },
-  { id: 2, title: "Снэк", price: 500, image: "/assets/snack.jpg" },
+  { id: 1, title: "Булочки с кремом", price: 500, image: "/assets/images/product.png", discount: 50 },
+  { id: 2, title: "Натуральный мед", price: 700, image: "/assets/images/product.png" },
 ];
 
 const services = [
@@ -56,11 +57,13 @@ const MainContent = () => {
             <h2>Товары</h2>
             <div className="cards">
               {products.map((product) => (
-                <div className="card" key={product.id}>
-                  <img src={product.image} alt={product.title} />
-                  <p>{product.price} руб</p>
-                  <button className="btn_add-to-cart">В корзину</button>
-                </div>
+                <ProductCard 
+                  key={product.id} 
+                  image={product.image} 
+                  price={product.price} 
+                  title={product.title} 
+                  discount={product.discount}
+                />
               ))}
             </div>
           </section>
