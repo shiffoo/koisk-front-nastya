@@ -213,3 +213,27 @@
 .footer-nav a:hover {
     color: #ff6b81;
 }
+
+/* Карусель */
+
+.product-carousel {
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* 📌 Стили слайдов */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    width: auto !important; /* Позволяет слайдам занимать нужную ширину */
+}
+
+/* 📌 Стрелки навигации */
+.swiper-button-prev, .swiper-button-next {
+    color: black !important; /* Черные стрелки */
+}
+
+.swiper-wrapper {
+    display: flex;
+}

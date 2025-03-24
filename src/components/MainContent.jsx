@@ -2,6 +2,12 @@ import React from "react";
 import "./MainContent.scss";
 import ProductCard from "./ProductCard";
 
+// 📌 Добавлено: Импорт Swiper.js
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+
 // Заглушки (в будущем заменим на API)
 import defaultImage from "/assets/images/advertisment.png"; // Заглушка
 
@@ -20,6 +26,12 @@ const products = [
   { id: 2, title: "Натуральный мед", price: 700, image: "/assets/images/product.png" },
   { id: 3, title: "Ореховая паста", price: 450, image: "/assets/images/product.png" },
   { id: 4, title: "Фруктовый джем", price: 300, image: "/assets/images/product.png" },
+  { id: 5, title: "Шоколадный крем", price: 600, image: "/assets/images/product.png", discount: 30 },
+  { id: 6, title: "Печенье с орехами", price: 350, image: "/assets/images/product.png" },
+  { id: 7, title: "Йогуртовый десерт", price: 550, image: "/assets/images/product.png" },
+  { id: 8, title: "Карамельный сироп", price: 250, image: "/assets/images/product.png" },
+  { id: 9, title: "Миндальное молоко", price: 750, image: "/assets/images/product.png" },
+  { id: 10, title: "Гречишный мед", price: 800, image: "/assets/images/product.png", discount: 70 },
 ];
 
 const services = [
@@ -54,21 +66,35 @@ const MainContent = () => {
               </div>
             </section>
 
-            {/* Блок товаров */}
+            {/* 📌 Блок товаров (теперь с каруселью) */}
             <section className="products">
               <button className="expand-btn">Все &gt;</button>
               <h2>Товары</h2>
-              <div className="cards">
+              
+              {/* 📌 Добавлено: Карусель Swiper */}
+              <Swiper
+                spaceBetween={10}  // Расстояние между карточками
+                slidesPerView={"auto"}  // Авторазмер карточек
+                navigation={true}  // Включаем стрелки
+                modules={[Navigation]}  // Подключаем модуль навигации
+                className="product-carousel"
+                breakpoints={{
+                  320: { slidesPerView: 1 }, // На маленьких экранах 1 карточка
+                  768: { slidesPerView: 2 }, // На планшетах 2 карточки
+                  1024: { slidesPerView: 3 }, // На десктопах 3 карточки
+                }}
+              >
                 {products.map((product) => (
-                  <ProductCard 
-                    key={product.id} 
-                    image={product.image} 
-                    price={product.price} 
-                    title={product.title} 
-                    discount={product.discount}
-                  />
+                  <SwiperSlide key={product.id}>
+                    <ProductCard 
+                      image={product.image} 
+                      price={product.price} 
+                      title={product.title} 
+                      discount={product.discount}
+                    />
+                  </SwiperSlide>
                 ))}
-              </div>
+              </Swiper>
             </section>
 
             {/* Блок услуг */}
