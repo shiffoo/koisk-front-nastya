@@ -2,23 +2,23 @@ import React from "react";
 import "./MainContent.scss";
 import ProductCard from "./ProductCard";
 
-// 📌 Добавлено: Импорт Swiper.js
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
-// Заглушки (в будущем заменим на API)
-import defaultImage from "/assets/images/advertisment.png"; // Заглушка
+import defaultImage from "/assets/images/advertisment.png";
+import serviceImage from "/assets/images/service.png";
 
+// Данные для блоков
 const recommendations = [
-    { id: 1, text: "Лучшие мандарины в городе", image: "" },
-    { id: 2, text: "Самый желтый апельсиновый сок", image: "" },
-    { id: 3, text: "Топ 5 рецептов булочек с корицей", image: "" },
-    { id: 4, text: "Где найти вкусное манго?", image: "" },
-    { id: 5, text: "Рейтинг лучших фруктовых рынков", image: "" },
-    { id: 6, text: "Готовим смузи из тропических фруктов", image: "" },
-    { id: 7, text: "Мармелад: секреты приготовления", image: "" },
+  { id: 1, text: "Лучшие мандарины в городе", image: "" },
+  { id: 2, text: "Самый желтый апельсиновый сок", image: "" },
+  { id: 3, text: "Топ 5 рецептов булочек с корицей", image: "" },
+  { id: 4, text: "Где найти вкусное манго?", image: "" },
+  { id: 5, text: "Рейтинг лучших фруктовых рынков", image: "" },
+  { id: 6, text: "Готовим смузи из тропических фруктов", image: "" },
+  { id: 7, text: "Мармелад: секреты приготовления", image: "" },
 ];
 
 const products = [
@@ -35,19 +35,26 @@ const products = [
 ];
 
 const services = [
-  { id: 1, title: "ПОМЫТЬ ТАРЕЛКУ", price: 200, image: "/assets/plate.jpg" },
-  { id: 2, title: "ДОСТАВКА ДОМОЙ", price: 300, image: "/assets/delivery.jpg" },
+  { id: 1, title: "ПОМЫТЬ ТАРЕЛКУ", price: 200, image: serviceImage },
+  { id: 2, title: "ДОСТАВКА ДОМОЙ", price: 300, image: serviceImage },
+  { id: 3, title: "УПАКОВКА В ПОДАРОК", price: 150, image: serviceImage },
+  { id: 4, title: "ПОМОЩЬ С ВЫБОРОМ", price: 100, image: serviceImage },
+  { id: 5, title: "ЭКСПРЕСС-ДОСТАВКА", price: 500, image: serviceImage },
+  { id: 6, title: "ГАРАНТИЯ НА ПРОДУКТЫ", price: 250, image: serviceImage },
+  { id: 7, title: "ПЕРСОНАЛИЗАЦИЯ УПАКОВКИ", price: 350, image: serviceImage },
+  { id: 8, title: "СПЕЦИАЛЬНАЯ УПАКОВКА ДЛЯ ПЕРЕВОЗКИ", price: 400, image: serviceImage },
+  { id: 9, title: "КОНСУЛЬТАЦИЯ ПО ПОДАРКАМ", price: 200, image: serviceImage },
+  { id: 10, title: "ИНДИВИДУАЛЬНЫЙ РЕЦЕПТ ОТ ШЕФА", price: 600, image: serviceImage },
 ];
 
 const MainContent = () => {
   return (
     <>
       <div className="main-content">
-        {/* Левая колонка */}
         <div className="left-content">
           <div className="content-wrapper">
 
-            {/* Блок рекомендаций */}
+            {/* 📌 БЛОК РЕКОМЕНДАЦИЙ */}
             <section className="recommendations">
               <button className="expand-btn">Все &gt;</button>
               <h2>Рекомендации <span>на районе</span></h2>
@@ -58,30 +65,30 @@ const MainContent = () => {
                     key={item.id}
                     style={{ backgroundImage: `url(${item.image || defaultImage})` }}
                   >
-                      <div className="card-text">
-                          <p>{item.text}</p>
-                      </div>
+                    <div className="card-text">
+                      <p>{item.text}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* 📌 Блок товаров (теперь с каруселью) */}
+            {/* 📌 БЛОК ТОВАРОВ */}
             <section className="products">
               <button className="expand-btn">Все &gt;</button>
               <h2>Товары</h2>
-              
-              {/* 📌 Добавлено: Карусель Swiper */}
+
+              {/* 📌 КАРУСЕЛЬ ТОВАРОВ */}
               <Swiper
-                spaceBetween={10}  // Расстояние между карточками
-                slidesPerView={"auto"}  // Авторазмер карточек
-                navigation={true}  // Включаем стрелки
-                modules={[Navigation]}  // Подключаем модуль навигации
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                navigation={true}
+                modules={[Navigation]}
                 className="product-carousel"
                 breakpoints={{
-                  320: { slidesPerView: 1 }, // На маленьких экранах 1 карточка
-                  768: { slidesPerView: 2 }, // На планшетах 2 карточки
-                  1024: { slidesPerView: 3 }, // На десктопах 3 карточки
+                  320: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
                 }}
               >
                 {products.map((product) => (
@@ -97,24 +104,44 @@ const MainContent = () => {
               </Swiper>
             </section>
 
-            {/* Блок услуг */}
+            {/* 📌 БЛОК УСЛУГ */}
             <section className="services">
               <button className="expand-btn">Все &gt;</button>
               <h2>Услуги</h2>
-              <div className="cards">
+
+              {/* 📌 КАРУСЕЛЬ УСЛУГ */}
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                navigation={true}
+                modules={[Navigation]}
+                className="service-carousel"
+                breakpoints={{
+                  320: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                }}
+              >
                 {services.map((service) => (
-                  <div className="card" key={service.id}>
-                    <img src={service.image} alt={service.title} />
-                    <p>{service.price} руб</p>
-                  </div>
+                  <SwiperSlide key={service.id} className="service-slide">
+                    <div className="card">
+                      <img src={service.image} alt={service.title} />
+                      <div className="service-text">
+                        <p className="service-title">{service.title}</p>
+                        <p className="service-subtitle">Бизнес тарелка</p> {/* 📌 Добавлен подзаголовок */}
+                        <p className="service-price">{service.price} руб</p>
+                      </div>
+                      <span className="favorite-btn">❤️</span> {/* 📌 Добавлена кнопка избранного */}
+                    </div>
+                  </SwiperSlide>
                 ))}
-              </div>
+              </Swiper>
             </section>
 
           </div>
         </div>
 
-        {/* Правая колонка (Яндекс.Карта) */}
+        {/* 📌 ПРАВАЯ КОЛОНКА (КАРТА) */}
         <div className="map-section">
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a3b06c76f3c48745e99b0b45f5b97c6cb5c34959fc81e01dd5b5d1f707fba5b&amp;source=constructor"
@@ -124,7 +151,7 @@ const MainContent = () => {
         </div>
       </div>
 
-      {/* Футер */}
+      {/* 📌 ФУТЕР */}
       <footer className="footer">
         <div className="footer-content">
           <p>© 2024 Koisk. Все права защищены.</p>
