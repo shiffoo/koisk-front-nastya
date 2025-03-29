@@ -1,7 +1,314 @@
-.home {
-  background-color: rgb(57, 67, 114); /* Фон страницы */
-  min-height: 100vh; /* Минимальная высота страницы */
-  padding: 20px;
+/* -------------------------------------------------- */
+/* 📌 ОБЩИЙ КОНТЕЙНЕР ДЛЯ СТРАНИЦЫ */
+/* -------------------------------------------------- */
+
+.home-wrapper {
+  padding: 20px 20px 0;
+}
+
+
+
+
+/* -------------------------------------------------- */
+/* 📌 ОСНОВНОЙ КОНТЕЙНЕР (СТРУКТУРА СТРАНИЦЫ) */
+/* -------------------------------------------------- */
+
+.main-content {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Левая часть (контейнер для секций) */
+.left-content {
   display: flex;
   flex-direction: column;
+  background: #fffcf6;
+  border-radius: 20px;
+  padding: 20px;
+  flex-basis: 70%;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Правая часть (Карта) */
+.map-section {
+  flex-basis: 30%;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.map-section iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border: none;
+}
+
+/* -------------------------------------------------- */
+/* 📌 ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ */
+/* -------------------------------------------------- */
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+/* Заголовки секций */
+.recommendations h2, .products h2, .services h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Кнопка "Все >" */
+.expand-btn {
+  position: absolute;
+  width: 70px;
+  right: 5px;
+  background: #f8e5e4;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.expand-btn:hover {
+  background: #ffa4b0;
+}
+
+/* -------------------------------------------------- */
+/* 📌 БЛОК РЕКОМЕНДАЦИЙ (НЕ ЗАВИСИТ ОТ ДРУГИХ БЛОКОВ) */
+/* -------------------------------------------------- */
+
+.recommendations {
+  position: relative;
+  padding-left: 15px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+/* Контейнер с карточками рекомендаций */
+.recommendations .cards {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* Карточка рекомендаций */
+.recommendations .card {
+  min-width: 120px;
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Затемнение фона в карточке */
+.recommendations .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+/* Текст внутри карточки */
+.recommendations .card-text {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 80%;
+  color: white;
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.4;
+  z-index: 10;
+  word-wrap: break-word;
+  margin-top: 10px;
+}
+
+/* Картинка внутри карточки */
+.recommendations .card img {
+  display: none;
+}
+
+/* -------------------------------------------------- */
+/* 📌 БЛОК ТОВАРОВ (НЕ ЗАВИСИТ ОТ ДРУГИХ БЛОКОВ) */
+/* -------------------------------------------------- */
+
+.products {
+  position: relative;
+  padding-left: 15px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+/* Контейнер с карточками товаров */
+.products .cards {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* Карточка товаров */
+.products .card {
+  min-width: 160px;
+  height: 220px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Картинка в карточке товаров */
+.products .card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Текст в карточке товаров */
+.products .card p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* -------------------------------------------------- */
+/* 📌 БЛОК УСЛУГ (КОРРЕКЦИЯ ПО МАКЕТУ) */
+/* -------------------------------------------------- */
+
+.services {
+  position: relative;
+  padding-left: 15px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+/* Контейнер для карусели */
+.services .service-carousel {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Карточка услуги */
+.services .card {
+  width: 260px; /* 📌 Исправлено: уменьшена ширина */
+  height: 100px; /* 📌 Исправлено: уменьшена высота */
+  background: #fff;
+  border-radius: 15px; /* 📌 Исправлено: более мягкое скругление */
+  padding: 10px 15px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* 📌 Исправлено: уменьшена тень */
+  display: flex;
+  flex-direction: row; /* 📌 Исправлено: картинка слева, текст справа */
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Картинка услуги */
+.services .card img {
+  width: 80px; /* 📌 Исправлено: уменьшена картинка */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Контейнер для текста */
+.services .card .service-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Название услуги */
+.services .card .service-title {
+  font-size: 14px; /* 📌 Исправлено: уменьшен шрифт */
+  font-weight: bold;
+  color: black;
+  margin-bottom: 2px;
+}
+
+/* Подзаголовок (категория услуги) */
+.services .card .service-subtitle {
+  font-size: 12px; /* 📌 Исправлено: серый подзаголовок */
+  color: #777;
+  margin-bottom: 5px;
+}
+
+/* Цена услуги */
+.services .card .service-price {
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+}
+
+/* Кнопка избранного (сердечко) */
+.services .card .favorite-btn {
+  font-size: 16px;
+  color: #ff6b81;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.services .card .favorite-btn:hover {
+  opacity: 0.7;
+}
+
+/* -------------------------------------------------- */
+/* 📌 КАРУСЕЛИ */
+/* -------------------------------------------------- */
+/* Карусели товаров, услуг и рекомендаций */
+.product-carousel,
+.service-carousel,
+.recommendation-carousel {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Стили слайдов */
+.product-carousel .swiper-slide,
+.service-carousel .swiper-slide,
+.recommendation-carousel .swiper-slide {
+  display: flex;
+  justify-content: center;
+  width: auto !important;
+}
+
+/* Стрелки навигации */
+.swiper-button-prev,
+.swiper-button-next {
+  color: black !important;
 }

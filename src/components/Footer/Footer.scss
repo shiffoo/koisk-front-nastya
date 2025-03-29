@@ -1,0 +1,45 @@
+/* -------------------------------------------------- */
+/* 📌 ФУТЕР */
+/* -------------------------------------------------- */
+
+.footer {
+  padding: 20px;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Контейнер внутри футера */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Текст копирайта */
+.footer p {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+/* Навигация в футере */
+.footer-nav {
+  display: flex;
+  gap: 15px;
+}
+
+/* Ссылки в футере */
+.footer-nav a {
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #ff6b81;
+}

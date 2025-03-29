@@ -37,7 +37,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Кнопка "Войти" справа */}
+        {/* Кнопка "Войти" .справа */}
         <button className="btn btn-login">Войти</button>
       </div>
     </header>
