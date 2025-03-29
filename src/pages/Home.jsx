@@ -1,6 +1,8 @@
 import React from "react";
 import "./Home.scss";
 import ProductCard from "../components/ProductCard";
+import ServiceCard from "../components/ServiceCard";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -61,7 +63,7 @@ const Home = () => {
 
               {/* 📌 БЛОК РЕКОМЕНДАЦИЙ */}
               <section className="recommendations">
-                <button className="expand-btn">Все &gt;</button>
+                <button className="expand-btn">все &gt;</button>
                 <h2>Рекомендации <span>на районе</span></h2>
                 <Swiper
                   spaceBetween={10}
@@ -93,7 +95,7 @@ const Home = () => {
 
               {/* 📌 БЛОК ТОВАРОВ */}
               <section className="products">
-                <button className="expand-btn">Все &gt;</button>
+                <button className="expand-btn">все &gt;</button>
                 <h2>Товары</h2>
 
                 {/* 📌 КАРУСЕЛЬ ТОВАРОВ */}
@@ -124,7 +126,7 @@ const Home = () => {
 
               {/* 📌 БЛОК УСЛУГ */}
               <section className="services">
-                <button className="expand-btn">Все &gt;</button>
+                <button className="expand-btn">все &gt;</button>
                 <h2>Услуги</h2>
 
                 {/* 📌 КАРУСЕЛЬ УСЛУГ */}
@@ -142,15 +144,11 @@ const Home = () => {
                 >
                   {services.map((service) => (
                     <SwiperSlide key={service.id} className="service-slide">
-                      <div className="card">
-                        <img src={service.image} alt={service.title} />
-                        <div className="service-text">
-                          <p className="service-title">{service.title}</p>
-                          <p className="service-subtitle">Бизнес тарелка</p> {/* 📌 Добавлен подзаголовок */}
-                          <p className="service-price">{service.price} руб</p>
-                        </div>
-                        <span className="favorite-btn">❤️</span> {/* 📌 Добавлена кнопка избранного */}
-                      </div>
+                      <ServiceCard
+                        image={service.image}
+                        title={service.title}
+                        price={service.price}
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>

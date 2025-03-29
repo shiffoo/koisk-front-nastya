@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductCard.scss";
-import defaultImage from "/assets/images/product.png"; // Заглушка, если нет фото
+import defaultImage from "/assets/images/product.png";
+import FavoriteButton from "../FavoriteButton"; // Заглушка, если нет фото
 
 const ProductCard = ({ image, price, title, discount }) => {
   return (
@@ -21,7 +22,9 @@ const ProductCard = ({ image, price, title, discount }) => {
 
       {/* Блок кнопок */}
       <div className="product-buttons">
-        <button className="favorite-btn">❤️</button>
+        <button className="favorite-btn">
+          <FavoriteButton />
+        </button>
         <button className="cart-btn">В корзину</button>
       </div>
     </div>
