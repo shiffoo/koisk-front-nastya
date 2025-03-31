@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import { getBusinessPage } from '../services/api'; // или другой метод, например getRecommendations
+
+
 import React from "react";
 import "./Home.scss";
 import ProductCard from "../components/ProductCard";
