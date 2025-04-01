@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./ProductCard.scss";
 
 import defaultImage from "/assets/images/product.png";
@@ -9,6 +10,7 @@ const ProductCard = ({ id, image, price, title, discount }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   // 📌 Переключатель "Избранное"
   const handleToggleFavorite = () => {
@@ -56,23 +58,32 @@ const ProductCard = ({ id, image, price, title, discount }) => {
     }
   };
 
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleClick}>
       {/* 📷 Картинка и скидка */}
-      <div
-        className="product-image"
-        style={{ backgroundImage: `url(${image || defaultImage})` }}
-      >
-        {discount && <span className="discount-badge">-{discount}%</span>}
+      <div className="product-image">
+        <img src={image || defaultImage} alt={title} />
+        {discount && <div className="discount-badge">-{discount}%</div>}
       </div>
 
       {/* 💸 Информация */}
       <div className="product-info">
-        <p className="price">{price} руб</p>
-        <p className="title">{title}</p>
+        <div className="product-price">
+          <span className="current-price">{price} ₽</span>
+          {discount && (
+            <span className="original-price">
+              {Math.round(price * (1 + discount / 100))} ₽
+            </span>
+          )}
+        </div>
+        <h3 className="product-title">{title}</h3>
       </div>
 
-      {/* 🔘 Кнопки */}
+      {/* �� Кнопки */}
       <div className="product-buttons">
         <FavoriteButton isFavorite={isFavorite} onClick={handleToggleFavorite} />
         {!isInCart ? (

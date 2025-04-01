@@ -1,12 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import AllProducts from "./pages/AllProducts/AllProducts";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Здесь можно добавить другие страницы */}
+        <Route path="/products" element={<AllProducts />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </Router>
   );

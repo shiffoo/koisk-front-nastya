@@ -8,7 +8,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 160px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
 }
 
 /* Блок с картинкой */
@@ -16,13 +24,16 @@
     position: relative;
     width: 100%;
     height: 130px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 }
 
 /* Скидка (-50%) */
@@ -35,22 +46,40 @@
     padding: 5px 10px;
     font-size: 12px;
     border-radius: 5px;
+    z-index: 1;
 }
 
 /* Информация о товаре */
 .product-info {
-    text-align: center;
-}
+    width: 100%;
+    text-align: left;
+    padding: 5px 0;
 
-.price {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 5px 0;
-}
+    .product-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 5px;
 
-.title {
-    font-size: 14px;
-    color: #333;
+        .current-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+    }
+
+    .product-title {
+        font-size: 14px;
+        color: #333;
+        margin: 0;
+        line-height: 1.3;
+    }
 }
 
 /* Блок кнопок */

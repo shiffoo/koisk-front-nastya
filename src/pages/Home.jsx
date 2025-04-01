@@ -18,6 +18,7 @@ import { Navigation } from "swiper/modules";
 
 import defaultImage from "/assets/images/advertisment.png";
 import serviceImage from "/assets/images/service.png";
+import { Link } from "react-router-dom";
 
 // Данные для блоков
 const recommendations = [
@@ -57,134 +58,120 @@ const services = [
 ];
 
 const Home = () => {
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-
-  const handleOpenAuthModal = () => {
-    setIsAuthModalOpen(true);
-  };
-
-  const handleCloseAuthModal = () => {
-    setIsAuthModalOpen(false);
-  };
-
   return (
-    <>
     <div className="home-wrapper">
-      <Header onLoginClick={handleOpenAuthModal} />
-      <AuthModal isOpen={isAuthModalOpen} onClose={handleCloseAuthModal} />
-      
-        <div className="main-content">
-          <div className="left-content">
-            <div className="content-wrapper">
+      <Header />
+      <div className="main-content">
+        <div className="left-content">
+          <div className="content-wrapper">
 
-              {/* 📌 БЛОК РЕКОМЕНДАЦИЙ */}
-              <section className="recommendations">
-                <button className="expand-btn">все &gt;</button>
-                <h2>Рекомендации <span>на районе</span></h2>
-                <Swiper
-                  spaceBetween={10}
-                  slidesPerView={"auto"}
-                  navigation={true}
-                  modules={[Navigation]}
-                  className="recommendation-carousel"
-                  breakpoints={{
-                    320: { slidesPerView: 2 },
-                    768: { slidesPerView: 3 },
-                    1024: { slidesPerView: 4 },
-                  }}
-                >
-                  {recommendations.map((item) => (
-                    <SwiperSlide key={item.id}>
-                      <div
-                        className="card"
-                        style={{ backgroundImage: `url(${item.image || defaultImage})` }}
-                      >
-                        <div className="card-text">
-                          <p>{item.text}</p>
-                        </div>
+            {/* 📌 БЛОК РЕКОМЕНДАЦИЙ */}
+            <section className="recommendations">
+              <Link to="/recommendations" className="expand-btn">все &gt;</Link>
+              <h2>Рекомендации <span>на районе</span></h2>
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                navigation={true}
+                modules={[Navigation]}
+                className="recommendation-carousel"
+                breakpoints={{
+                  320: { slidesPerView: 2 },
+                  768: { slidesPerView: 3 },
+                  1024: { slidesPerView: 4 },
+                }}
+              >
+                {recommendations.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <div
+                      className="card"
+                      style={{ backgroundImage: `url(${item.image || defaultImage})` }}
+                    >
+                      <div className="card-text">
+                        <p>{item.text}</p>
                       </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
 
-              </section>
+            </section>
 
-              {/* 📌 БЛОК ТОВАРОВ */}
-              <section className="products">
-                <button className="expand-btn">все &gt;</button>
-                <h2>Товары</h2>
+            {/* 📌 БЛОК ТОВАРОВ */}
+            <section className="products">
+              <Link to="/products" className="expand-btn">все &gt;</Link>
+              <h2>Товары</h2>
 
-                {/* 📌 КАРУСЕЛЬ ТОВАРОВ */}
-                <Swiper
-                  spaceBetween={10}
-                  slidesPerView={"auto"}
-                  navigation={true}
-                  modules={[Navigation]}
-                  className="product-carousel"
-                  breakpoints={{
-                    320: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 },
-                  }}
-                >
-                  {products.map((product) => (
-                    <SwiperSlide key={product.id}>
-                      <ProductCard 
-                        image={product.image} 
-                        price={product.price} 
-                        title={product.title} 
-                        discount={product.discount}
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </section>
+              {/* 📌 КАРУСЕЛЬ ТОВАРОВ */}
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                navigation={true}
+                modules={[Navigation]}
+                className="product-carousel"
+                breakpoints={{
+                  320: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                }}
+              >
+                {products.map((product) => (
+                  <SwiperSlide key={product.id}>
+                    <ProductCard 
+                      image={product.image} 
+                      price={product.price} 
+                      title={product.title} 
+                      discount={product.discount}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </section>
 
-              {/* 📌 БЛОК УСЛУГ */}
-              <section className="services">
-                <button className="expand-btn">все &gt;</button>
-                <h2>Услуги</h2>
+            {/* 📌 БЛОК УСЛУГ */}
+            <section className="services">
+              <Link to="/services" className="expand-btn">все &gt;</Link>
+              <h2>Услуги</h2>
 
-                {/* 📌 КАРУСЕЛЬ УСЛУГ */}
-                <Swiper
-                  spaceBetween={10}
-                  slidesPerView={"auto"}
-                  navigation={true}
-                  modules={[Navigation]}
-                  className="service-carousel"
-                  breakpoints={{
-                    320: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 },
-                  }}
-                >
-                  {services.map((service) => (
-                    <SwiperSlide key={service.id} className="service-slide">
-                      <ServiceCard
-                        image={service.image}
-                        title={service.title}
-                        price={service.price}
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </section>
+              {/* 📌 КАРУСЕЛЬ УСЛУГ */}
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                navigation={true}
+                modules={[Navigation]}
+                className="service-carousel"
+                breakpoints={{
+                  320: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                }}
+              >
+                {services.map((service) => (
+                  <SwiperSlide key={service.id} className="service-slide">
+                    <ServiceCard
+                      image={service.image}
+                      title={service.title}
+                      price={service.price}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </section>
 
-            </div>
-          </div>
-
-          {/* 📌 ПРАВАЯ КОЛОНКА (КАРТА) */}
-          <div className="map-section">
-            <iframe
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a3b06c76f3c48745e99b0b45f5b97c6cb5c34959fc81e01dd5b5d1f707fba5b&amp;source=constructor"
-              frameBorder="0"
-              title="Карта"
-            ></iframe>
           </div>
         </div>
-        <Footer />
+
+        {/* 📌 ПРАВАЯ КОЛОНКА (КАРТА) */}
+        <div className="map-section">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a3b06c76f3c48745e99b0b45f5b97c6cb5c34959fc81e01dd5b5d1f707fba5b&amp;source=constructor"
+            frameBorder="0"
+            title="Карта"
+          ></iframe>
+        </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 
