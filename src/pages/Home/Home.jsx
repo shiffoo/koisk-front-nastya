@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { getBusinessPage } from '../services/api'; // или другой метод, например getRecommendations
+import { getBusinessPage } from '../../services/api'; // или другой метод, например getRecommendations
 
 
 import React from "react";
 import "./Home.scss";
-import ProductCard from "../components/ProductCard";
-import ServiceCard from "../components/ServiceCard";
+import ProductCard from "../../components/ProductCard";
+import ServiceCard from "../../components/ServiceCard";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import AuthModal from "../components/AuthModal";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import AuthModal from "../../components/AuthModal";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
