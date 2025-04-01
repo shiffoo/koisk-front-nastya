@@ -82,16 +82,54 @@
 /* Кнопка "В корзину" */
 .cart-btn {
     flex-grow: 1;
-    background: #ffccd5;
+    background: #F09898;
     border: none;
     padding: 8px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    color: #333;
+    color: white;
 }
 
 .cart-btn:hover {
-    background: #ffa4b0;
+    background: #e48a8a;
+}
+
+/* Контролы количества */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    background: #F09898;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 0;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.quantity {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    min-width: 20px;
+    text-align: center;
 }

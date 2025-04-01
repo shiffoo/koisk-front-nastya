@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ onLoginClick }) => {
   return (
     <header className="header">
       {/* Левый блок: логотип + поиск */}
@@ -37,8 +37,10 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Кнопка "Войти" .справа */}
-        <button className="btn btn-login">Войти</button>
+        {/* Кнопка "Войти" справа */}
+        <button className="btn btn-login" onClick={onLoginClick}>
+          Войти
+        </button>
       </div>
     </header>
   );

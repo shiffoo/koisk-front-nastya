@@ -9,6 +9,7 @@ import ServiceCard from "../components/ServiceCard";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import AuthModal from "../components/AuthModal";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -56,10 +57,21 @@ const services = [
 ];
 
 const Home = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const handleOpenAuthModal = () => {
+    setIsAuthModalOpen(true);
+  };
+
+  const handleCloseAuthModal = () => {
+    setIsAuthModalOpen(false);
+  };
+
   return (
     <>
     <div className="home-wrapper">
-      <Header />
+      <Header onLoginClick={handleOpenAuthModal} />
+      <AuthModal isOpen={isAuthModalOpen} onClose={handleCloseAuthModal} />
       
         <div className="main-content">
           <div className="left-content">

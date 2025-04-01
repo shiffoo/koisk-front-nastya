@@ -7,6 +7,8 @@ import { addToFavorites, removeFromFavorites } from "../../services/api";
 
 const ProductCard = ({ id, image, price, title, discount }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   // 📌 Переключатель "Избранное"
   const handleToggleFavorite = () => {
@@ -37,6 +39,23 @@ const ProductCard = ({ id, image, price, title, discount }) => {
     }
   };
 
+  const handleAddToCart = () => {
+    setIsInCart(true);
+  };
+
+  const handleIncrement = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    } else {
+      setIsInCart(false);
+      setQuantity(1);
+    }
+  };
+
   return (
     <div className="product-card">
       {/* 📷 Картинка и скидка */}
@@ -56,7 +75,15 @@ const ProductCard = ({ id, image, price, title, discount }) => {
       {/* 🔘 Кнопки */}
       <div className="product-buttons">
         <FavoriteButton isFavorite={isFavorite} onClick={handleToggleFavorite} />
-        <button className="cart-btn">В корзину</button>
+        {!isInCart ? (
+          <button className="cart-btn" onClick={handleAddToCart}>В корзину</button>
+        ) : (
+          <div className="quantity-controls">
+            <button className="quantity-btn" onClick={handleDecrement}>−</button>
+            <span className="quantity">{quantity}</span>
+            <button className="quantity-btn" onClick={handleIncrement}>+</button>
+          </div>
+        )}
       </div>
     </div>
   );
