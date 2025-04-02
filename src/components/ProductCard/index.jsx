@@ -63,9 +63,9 @@ const ProductCard = ({ id, image, price, title, discount }) => {
   };
 
   return (
-    <div className="product-card" onClick={handleClick}>
+    <div className="product-card">
       {/* 📷 Картинка и скидка */}
-      <div className="product-image">
+      <div className="product-image" onClick={handleClick}>
         <img src={image || defaultImage} alt={title} />
         {discount && <div className="discount-badge">-{discount}%</div>}
       </div>

@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { getBusinessPage } from '../services/api'; // или другой метод, например getRecommendations
+import { getBusinessPage } from '../../services/api'; // или другой метод, например getRecommendations
 
 
 import React from "react";
 import "./Home.scss";
-import ProductCard from "../components/ProductCard";
-import ServiceCard from "../components/ServiceCard";
+import ProductCard from "../../components/ProductCard";
+import ServiceCard from "../../components/ServiceCard";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import AuthModal from "../components/AuthModal";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import AuthModal from "../../components/AuthModal";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -165,7 +165,7 @@ const Home = () => {
         <div className="map-section">
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a3b06c76f3c48745e99b0b45f5b97c6cb5c34959fc81e01dd5b5d1f707fba5b&amp;source=constructor"
-            frameBorder="0"
+            style={{ border: 'none' }}
             title="Карта"
           ></iframe>
         </div>

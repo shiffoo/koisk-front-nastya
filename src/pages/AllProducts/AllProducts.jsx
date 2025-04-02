@@ -3,8 +3,8 @@ import './AllProducts.scss';
 import ProductCard from '../../components/ProductCard';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import CategoriesSidebar from '../../components/CategoriesSidebar';
 
-// Временные данные для категорий
 const categories = [
   { id: 1, name: 'Все товары', count: 150 },
   { id: 2, name: 'Выпечка', count: 45 },
@@ -15,7 +15,6 @@ const categories = [
   { id: 7, name: 'Заморозка', count: 15 },
 ];
 
-// Временные данные для товаров (можно будет заменить на API)
 const products = [
   { id: 1, title: "Булочки с кремом", price: 500, image: "/assets/images/product.png", discount: 50 },
   { id: 2, title: "Натуральный мед", price: 700, image: "/assets/images/product.png" },
@@ -33,29 +32,19 @@ const AllProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState(1);
 
   return (
-    <div className="all-products-wrapper">
+    <div className="all-products-page">
       <Header />
-      
-      <div className="all-products-content">
-        {/* Левая колонка с категориями */}
-        <div className="categories-sidebar">
-          <h2>Категории</h2>
-          <div className="categories-list">
-            {categories.map(category => (
-              <button
-                key={category.id}
-                className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(category.id)}
-              >
-                <span className="category-name">{category.name}</span>
-                <span className="category-count">{category.count}</span>
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* Правая колонка с товарами */}
-        <div className="products-grid">
+      <div className="all-products-content">
+        <aside className="all-products-sidebar">
+          <CategoriesSidebar
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategorySelect={setSelectedCategory}
+          />
+        </aside>
+
+        <section className="all-products-section">
           <div className="products-header">
             <h1>{categories.find(c => c.id === selectedCategory)?.name}</h1>
             <div className="products-filters">
@@ -80,7 +69,7 @@ const AllProducts = () => {
               />
             ))}
           </div>
-        </div>
+        </section>
       </div>
 
       <Footer />
@@ -88,4 +77,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts; 
+export default AllProducts;
