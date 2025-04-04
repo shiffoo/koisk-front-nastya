@@ -20,12 +20,24 @@ export const getFavorites = ({ userId, type }) =>
   API.get('/client/favorites/list', { params: { userId, type } });
 
 export const addToFavorites = ({ userId, resourceId, type }) =>
-  API.post('/client/favorites/add', { userId, resourceId, type });
+  API.post(
+    '/client/favorites/add',
+    { userId, resourceId, type },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 
 export const removeFromFavorites = ({ userId, resourceId, type }) =>
   API.delete('/client/favorites/remove', {
     data: { userId, resourceId, type },
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
+  
 
 
 // ─── 🛒 КОРЗИНА (КЛИЕНТСКИЙ МИКРОСЕРВИС) ─────────────────────
